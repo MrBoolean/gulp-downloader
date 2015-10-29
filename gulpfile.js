@@ -57,3 +57,5 @@ gulp.task('codeclimate', function sendToCodeclimate() {
     }))
   ;
 });
+
+gulp.task('default', ['lint', 'test']);
