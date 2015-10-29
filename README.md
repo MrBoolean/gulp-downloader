@@ -1,6 +1,6 @@
 gulp-downloader
 ===============
-[![Code Climate](https://codeclimate.com/github/MrBoolean/gulp-downloader/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/gulp-downloader) [![Test Coverage](https://codeclimate.com/github/MrBoolean/gulp-downloader/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/gulp-downloader) [![Build Status](https://travis-ci.org/MrBoolean/gulp-downloader.svg?branch=master)](https://travis-ci.org/MrBoolean/gulp-downloader) [![Dependency Status](https://gemnasium.com/MrBoolean/gulp-downloader.svg)](https://gemnasium.com/MrBoolean/ggulp-downloader) [![npm](https://img.shields.io/npm/v/gulp-downloader.svg)](https://npmjs.org/gulp-downloader)
+[![Code Climate](https://codeclimate.com/github/MrBoolean/gulp-downloader/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/gulp-downloader) [![Test Coverage](https://codeclimate.com/github/MrBoolean/gulp-downloader/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/gulp-downloader) [![Build Status](https://travis-ci.org/MrBoolean/gulp-downloader.svg?branch=master)](https://travis-ci.org/MrBoolean/gulp-downloader) [![Dependency Status](https://gemnasium.com/MrBoolean/gulp-downloader.svg)](https://gemnasium.com/MrBoolean/gulp-downloader) [![npm](https://img.shields.io/npm/v/gulp-downloader.svg)](https://npmjs.org/gulp-downloader)
 
 <p align="center">
   <a href="http://gulpjs.com">
@@ -12,7 +12,7 @@ gulp-downloader
 
 ## Install
 ```
-npm i --save downloadr
+npm i --save gulp-downloader
 ```
 
 ## Usage
@@ -47,9 +47,9 @@ gulp.task('download', function() {
   return download([
       'http://img-9gag-fun.9cache.com/photo/1293694_700b.jpg',
       {
-        fileName: 'downloadr.zip',
+        fileName: 'gulp-downloader.zip',
         request: {
-          url: 'https://github.com/MrBoolean/downloadr/archive/master.zip'
+          url: 'https://github.com/MrBoolean/gulp-downloader/archive/master.zip'
         }
       }
     ])
