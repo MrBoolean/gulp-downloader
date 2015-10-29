@@ -7,7 +7,7 @@ gulp-downloader
     <img height="257" width="114" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
   </a>
   <br><br>
-  A simple and smart download plugin for <a href="http://gulpjs.com" target="_blank">gulp</a>.
+  A simple and smart download plugin for <a target="_blank" href="http://gulpjs.com">gulp</a>.
 </p>
 
 ## Install
@@ -63,6 +63,7 @@ Option        | Description
 ------------- | ----------------------------------------------------------------------
 `fileName`    | The file name as a string.
 `request`     | An object which contains the [`request`](npmjs.com/request) options.
+`verbose`     | Enable/disable the verbose mode.
 
 ## License
 The MIT License (MIT)
