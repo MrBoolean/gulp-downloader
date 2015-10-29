@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var istanbul = require('gulp-istanbul');
 var mocha = require('gulp-mocha');
+var codeclimate = require('gulp-codeclimate-reporter');
 var downloader = require('./');
 
 gulp.task('download', function download() {
@@ -44,6 +45,15 @@ gulp.task('test', ['test.instrument'], function test() {
     }))
     .pipe(istanbul.writeReports({
       dir: './dist/report'
+    }))
+  ;
+});
+
+gulp.task('codeclimate', function sendToCodeclimate() {
+  return gulp
+    .src(['dist/report/lcov.info'], { read: false })
+    .pipe(codeclimate({
+      token: '4feb2d83c00898022b94c985b36d7bef9759427f938518bdbe17a3f47ce67ec0'
     }))
   ;
 });

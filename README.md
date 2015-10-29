@@ -1,6 +1,14 @@
 gulp-downloader
 ===============
-A simple and smart download plugin for [gulp](http://gulpjs.com).
+[![Code Climate](https://codeclimate.com/github/MrBoolean/gulp-downloader/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/gulp-downloader) [![Test Coverage](https://codeclimate.com/github/MrBoolean/gulp-downloader/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/gulp-downloader) [![Build Status](https://travis-ci.org/MrBoolean/gulp-downloader.svg?branch=master)](https://travis-ci.org/MrBoolean/gulp-downloader) [![Dependency Status](https://gemnasium.com/MrBoolean/gulp-downloader.svg)](https://gemnasium.com/MrBoolean/ggulp-downloader) [![npm](https://img.shields.io/npm/v/gulp-downloader.svg)](https://npmjs.org/gulp-downloader)
+
+<p align="center">
+  <a href="http://gulpjs.com">
+    <img height="257" width="114" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
+  </a>
+  <br><br>
+  A simple and smart download plugin for [gulp](http://gulpjs.com).
+</p>
 
 ## Install
 ```
