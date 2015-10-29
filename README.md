@@ -7,7 +7,7 @@ gulp-downloader
     <img height="257" width="114" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
   </a>
   <br><br>
-  A simple and smart download plugin for [gulp](http://gulpjs.com).
+  A simple and smart download plugin for <a href="http://gulpjs.com" target="_blank">gulp</a>.
 </p>
 
 ## Install
