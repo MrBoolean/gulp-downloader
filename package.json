@@ -41,8 +41,10 @@
     "lodash.defaults": "^3.1.2",
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
+    "path": "^0.12.7",
     "progress": "^1.1.8",
     "request": "^2.65.0",
+    "vinyl": "^1.1.0",
     "vinyl-source-stream": "^1.1.0"
   }
 }
