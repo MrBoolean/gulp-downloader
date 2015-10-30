@@ -20,6 +20,12 @@ npm i --save gulp-downloader
 var download = require('gulp-downloader');
 ```
 
+**Arguments**
+
+```
+download(files[, globalOptions]);
+```
+
 ### Using a string
 ```javascript
 gulp.task('download', function() {

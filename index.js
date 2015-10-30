@@ -1,78 +1,76 @@
-var util = require('util');
 var PluginError = require('gulp-util').PluginError;
 var request = require('request');
-var ProgressBar = require('progress');
 var path = require('path');
 var isString = require('lodash.isstring');
 var isArray = require('lodash.isarray');
 var defaults = require('lodash.defaults');
-var source = require('vinyl-source-stream');
 var es = require('event-stream');
+var File = require('vinyl');
+var progressBar = require('./lib/progress-bar');
 
-function download(options) {
-  var file;
-  var bar;
+function download(tasks, globalOptions) {
+  var stream;
+  var completed = 0;
+  var taskCount;
 
-  if (!options) {
-    throw new PluginError({
-      plugin: 'gulp-downloader',
-      message: 'The passed options are not valid'
-    });
-  }
+  globalOptions = globalOptions || {};
 
-  if (isString(options)) {
-    options = {
-      fileName: path.parse(options).base,
-      request: {
-        url: options
-      }
-    };
-  }
-
-  if (isArray(options)) {
-    return es.concat.apply(es.concat, options.map(function downloadEach(item) {
-      return download(item);
-    }));
-  }
-
-  options = defaults(options || {}, {
-    fileName: null,
-    verbose: false,
-    request: {}
+  stream = es.through(function eachFile(file, encoding, next) {
+    this.push(file);
+    next();
   });
 
-  file = source(options.fileName);
+  if (!isArray(tasks)) {
+    tasks = [tasks];
+  }
 
-  return request(options.request)
-    .on('response', function onResponse(res) {
-      var total;
+  taskCount = tasks.length;
 
-      if (!options.verbose) {
-        return false;
-      }
+  tasks.forEach(function eachTask(options) {
+    if (!options) {
+      throw new PluginError({
+        plugin: 'gulp-downloader',
+        message: 'The passed options are not valid'
+      });
+    }
 
-      /* istanbul ignore next */
-      total = parseInt(res.headers['content-length'], 10);
+    if (isString(options)) {
+      options = {
+        fileName: path.parse(options).base,
+        request: {
+          url: options
+        }
+      };
+    }
 
-      /* istanbul ignore next */
-      if (total) {
-        bar = new ProgressBar(
-          util.format(' downloading "%s" [:bar] :percent :etas', options.fileName),
-          {
-            complete: '=',
-            incomplete: ' ',
-            width: 20,
-            total: total
-          }
-        );
+    options = defaults(options || {}, globalOptions, {
+      fileName: null,
+      verbose: false,
+      request: {}
+    });
 
-        res.on('data', function onChunk(chunk) {
-          bar.tick(chunk.length || 0);
-        });
+    if (!options.fileName) {
+      options.fileName = path.parse(options.request.url || options.request.uri).base;
+    }
+
+    request(options.request, function onCompleted(err, res, body) {
+      var file = new File({
+        path: options.fileName,
+        contents: new Buffer(body)
+      });
+
+      stream.push(file);
+      completed++;
+
+      if (completed === taskCount) {
+        stream.emit('end');
       }
     })
-    .pipe(file)
-  ;
+      .on('response', progressBar(options))
+    ;
+  });
+
+  return stream;
 }
 
 module.exports = download;

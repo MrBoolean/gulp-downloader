@@ -15,14 +15,14 @@ gulp.task('download', function download() {
         url: 'https://github.com/MrBoolean/gulp-downloader/archive/master.zip'
       }
     }
-  ])
+  ], { verbose: true })
     .pipe(gulp.dest('./dist'))
   ;
 });
 
 gulp.task('lint', function lint() {
   return gulp
-    .src(['index.js', 'gulpfile.js', 'test/**/*.test.js'])
+    .src(['index.js', 'gulpfile.js', 'lib/**/*.js', 'test/**/*.test.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
@@ -31,7 +31,7 @@ gulp.task('lint', function lint() {
 
 gulp.task('test.instrument', function instrument() {
   return gulp
-    .src(['index.js'])
+    .src(['index.js', 'lib/**/*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
   ;
