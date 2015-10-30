@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "event-stream": "^3.3.2",
+    "gulp-util": "^3.0.7",
     "lodash.defaultsdeep": "^3.10.0",
     "lodash.isarray": "^3.0.4",
     "lodash.isstring": "^3.0.1",
