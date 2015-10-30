@@ -47,10 +47,11 @@ gulp.task('download', function() {
 })
 ```
 
-### Using a bunch of data
+### Using a bunch objects/strings
 ```javascript
 gulp.task('download', function() {
-  return download([
+  return download(
+    [
       'http://img-9gag-fun.9cache.com/photo/1293694_700b.jpg',
       {
         fileName: 'gulp-downloader.zip',
@@ -58,7 +59,11 @@ gulp.task('download', function() {
           url: 'https://github.com/MrBoolean/gulp-downloader/archive/master.zip'
         }
       }
-    ])
+    ],
+    {
+      verbose: true
+    }
+  )
     .pipe(gulp.dest('/dev/null'))
   ;
 })
