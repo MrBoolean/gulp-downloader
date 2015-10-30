@@ -42,7 +42,7 @@ describe('gulp-downloader', function gulpDownloaderTest() {
       .on('data', function onData(file) {
         streamed.push(file);
       })
-      .on('end', function() {
+      .on('end', function onEnd() {
         streamed.should.have.length(2);
         streamed[0].path.substr(-8).should.equal('test.jpg');
         streamed[1].path.substr(-8).should.equal('asdf.jpg');
