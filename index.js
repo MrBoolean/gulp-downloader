@@ -3,7 +3,7 @@ var request = require('request');
 var path = require('path');
 var isString = require('lodash.isstring');
 var isArray = require('lodash.isarray');
-var defaults = require('lodash.defaults');
+var defaults = require('lodash.defaultsdeep');
 var es = require('event-stream');
 var File = require('vinyl');
 var progressBar = require('./lib/progress-bar');
@@ -46,20 +46,22 @@ function download(tasks, globalOptions) {
     options = defaults(options || {}, globalOptions, {
       fileName: null,
       verbose: false,
-      request: {}
+      request: {
+        encoding: null
+      }
     });
 
     if (!options.fileName) {
       options.fileName = path.parse(options.request.url || options.request.uri).base;
     }
 
-    request(options.request, function onCompleted(err, res, body) {
+    request(options.request, function onResponse(err, res, body) {
       var file = new File({
         path: options.fileName,
         contents: new Buffer(body)
       });
 
-      stream.push(file);
+      stream.queue(file);
       completed++;
 
       if (completed === taskCount) {
