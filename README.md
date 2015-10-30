@@ -70,11 +70,11 @@ gulp.task('download', function() {
 ```
 
 ## Available options
-Option        | Description
-------------- | ----------------------------------------------------------------------
-`fileName`    | The file name as a string.
-`request`     | An object which contains the [`request`](npmjs.com/request) options.
-`verbose`     | Enable/disable the verbose mode.
+Option        | Type      | Description
+------------- | --------- |-----------------------------------------------------------------
+`fileName`    | `string`  | The file name as a string.
+`request`     | `object`  | [`request`](npmjs.com/request) options.
+`verbose`     | `boolean` | Enable/disable the verbose mode.
 
 ## License
 The MIT License (MIT)
